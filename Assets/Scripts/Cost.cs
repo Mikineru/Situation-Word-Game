@@ -10,7 +10,8 @@ public class Cost : MonoBehaviour
     GameObject dice2;
     int cost1;
     int cost2;
-    int maxCost;
+    public int maxCost = 0;
+    public int currentCost = 0;
     public bool decideCost = false;
 
     // Start is called before the first frame update
@@ -31,11 +32,13 @@ public class Cost : MonoBehaviour
                 cost1 = dice1.GetComponent<Dice>().topIndex;
                 cost2 = dice2.GetComponent<Dice>().topIndex;
                 maxCost = cost1 + cost2 + 2;
-                text.text = "コスト：0 / " + maxCost;
+                text.text = "コスト：" + currentCost  + " / " + maxCost;
                 dice1.SetActive(false);
                 dice2.SetActive(false);
                 decideCost = true;
             }
         }
+
+        text.text = "コスト：" + currentCost + " / " + maxCost;
     }
 }

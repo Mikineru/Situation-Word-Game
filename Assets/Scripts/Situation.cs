@@ -10,7 +10,6 @@ public class Situation : MonoBehaviour
     {
         Text text = GetComponent<Text>();
         int probability = Random.Range(0, 2);
-        Debug.Log(probability);
         if(probability == 0)
         {
             text.text = "学校";
