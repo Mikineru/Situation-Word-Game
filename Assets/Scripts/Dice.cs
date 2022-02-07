@@ -44,7 +44,6 @@ public class Dice : MonoBehaviour
                 topValue = diceNumber[i].transform.position.y;
                 topIndex = i;
             }
-            Debug.Log(topIndex + 1);
         }
     }
 }

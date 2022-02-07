@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     bool isEnd = false;
     GameObject sentence;
     GameObject card;
+    GameObject decision;
+    bool isMaxCost = false;
 
     // Start is called before the first frame update
     void Start()
@@ -21,12 +23,13 @@ public class GameManager : MonoBehaviour
         canvas = GameObject.Find("Canvas");
         situation = canvas.transform.Find("Situation").gameObject;
         animator = situation.GetComponent<Animator>();
-        cost = canvas.transform.Find("Cost").gameObject;
+        cost = canvas.transform.Find("MaxCost").gameObject;
         dice = GameObject.Find("Dice");
         dice1 = dice.transform.Find("Dice1").gameObject;
         dice2 = dice.transform.Find("Dice2").gameObject;
         sentence = canvas.transform.Find("Sentence").gameObject;
         card = canvas.transform.Find("Card").gameObject;
+        decision = canvas.transform.Find("Decision").gameObject;
     }
 
     // Update is called once per frame
@@ -40,10 +43,12 @@ public class GameManager : MonoBehaviour
             isEnd = true;
         }
 
-        if (cost.GetComponent<Cost>().decideCost)
+        if (!isMaxCost && cost.GetComponent<Cost>().decideCost)
         {
             sentence.SetActive(true);
             card.SetActive(true);
+            decision.SetActive(true);
+            isMaxCost = true;
         }
     }
 }
